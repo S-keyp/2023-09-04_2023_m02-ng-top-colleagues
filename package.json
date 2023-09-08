@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "create": "ng generate service providers/Vote",
-    "build": "ng build --base-href=https://S-keyp.github.io/top_colleague/",
+    "build": "ng build --base-href=https://S-keyp.github.io/2023-09-04_2023_m02-ng-top-colleagues/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
