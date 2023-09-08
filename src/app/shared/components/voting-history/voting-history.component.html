@@ -1,0 +1,16 @@
+<div class="history">
+    <h3 class="history-title">Historique</h3>
+    <div *ngIf="votes.length > 0; else noResult">
+        <div class="history-element" *ngFor="let vote of votes">
+            <img [src]="vote.colleague.photo">
+            <p *ngIf="vote.colleague.score >= 200; else badScore"><span class="history-content-name">{{vote.colleague.pseudo}}</span> est apprécié, il/elle à un score de: {{vote.colleague.score}}</p>
+            <ng-template #badScore>
+                <p><span class="history-content-name">{{vote.colleague.pseudo}}</span> est détesté, il/elle à un score de: {{vote.colleague.score}}</p>
+            </ng-template>
+                <button (click)="removeVote(vote)">Supprimer</button>
+        </div>
+    </div>
+    <ng-template #noResult>
+        <p>Pas d'historique à afficher</p>
+    </ng-template>
+</div>

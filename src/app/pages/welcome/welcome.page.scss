@@ -1,0 +1,15 @@
+.main{
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    display: flex;
+    margin-top: 36px;
+    overflow: hidden;
+}
+
+.main-decorator {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
