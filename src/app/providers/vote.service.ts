@@ -13,7 +13,6 @@ export class VoteService {
   private votes = new Subject<Vote>();
 
   private baseUrl = 'https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2'
-  test = 10
 
 
   abonner(){
