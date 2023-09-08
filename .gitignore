@@ -1,2 +1,16 @@
 .idea
 *.iml
+node_modules
+dist
+.angular/
+.idea/
+
+/shelf/
+/workspace.xml
+
+/httpRequests/
+
+/dataSources/
+/dataSources.local.xml
+
+01-demo/
