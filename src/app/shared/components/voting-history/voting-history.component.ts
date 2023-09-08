@@ -26,6 +26,8 @@ export class VotingHistoryComponent implements OnInit {
 	}
 
 	handleUpdateResponse(data: Vote){
+		// ici  on récup un vote donc le collègue entier dont sont score,
+		// utiliser ça pour afficher hp? ou refresh le collegue list component?
 		this.voteService.getVotes().then((data) => {
 			this.votes = data
 		})

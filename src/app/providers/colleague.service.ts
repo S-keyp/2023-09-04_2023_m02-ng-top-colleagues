@@ -10,6 +10,7 @@ import Axios from 'axios-observable'
 export class ColleagueService {
 
 	baseRoute = "https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2"
+	
 	data = undefined
 
 	constructor() { }
@@ -18,8 +19,10 @@ export class ColleagueService {
 		const endpoint = this.baseRoute + "/colleagues"
 
 		try {
+			
 			const response = await axios.get(endpoint);
 			return response.data;
+
 		} catch (error) {
 
 			return undefined;

@@ -44,11 +44,5 @@ export class VoteService {
 			console.error("Error in function voteForCollegue() : " + error);
 		}
 	}
-
-	
-
-	handleErrorPostVote(error: any) {
-		console.error('ERROR in VoteService', error.message);
-	}
 	  
 }
