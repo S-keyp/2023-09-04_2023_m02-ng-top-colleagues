@@ -3,9 +3,9 @@
     <div *ngIf="votes.length > 0; else noResult">
         <div class="history-element" *ngFor="let vote of votes">
             <img [src]="vote.colleague.photo">
-            <p *ngIf="vote.colleague.score >= 200; else badScore"><span class="history-content-name">{{vote.colleague.pseudo}}</span> est apprécié, il/elle à un score de: {{vote.colleague.score}}</p>
+            <p *ngIf="vote.colleague.score >= 200; else badScore"><span class="history-content-name">{{vote.colleague.pseudo}}</span> est apprécié, <br> il/elle à un score de: {{vote.colleague.score}}</p>
             <ng-template #badScore>
-                <p><span class="history-content-name">{{vote.colleague.pseudo}}</span> est détesté, il/elle à un score de: {{vote.colleague.score}}</p>
+                <p><span class="history-content-name">{{vote.colleague.pseudo}}</span> est détesté, <br> il/elle à un score de: {{vote.colleague.score}}</p>
             </ng-template>
                 <button (click)="removeVote(vote)">Supprimer</button>
         </div>
