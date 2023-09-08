@@ -17,7 +17,7 @@ export class VotingHistoryComponent implements OnInit {
 	voteSub: Subscription
 
 	constructor(private voteService: VoteService) {
-		this.voteSub = this.voteService.abonner().subscribe(
+		this.voteSub = this.voteService.getObservable().subscribe(
 			{
 				next: this.handleUpdateResponse.bind(this),
 				error: this.handleError.bind(this)
@@ -26,8 +26,6 @@ export class VotingHistoryComponent implements OnInit {
 	}
 
 	handleUpdateResponse(data: Vote){
-		// ici  on récup un vote donc le collègue entier dont sont score,
-		// utiliser ça pour afficher hp? ou refresh le collegue list component?
 		this.voteService.getVotes().then((data) => {
 			this.votes = data
 		})
@@ -44,7 +42,7 @@ export class VotingHistoryComponent implements OnInit {
 		})
 	}
 
-	removeVote(vote: any) {
+	removeVote(vote: Vote) {
 		this.votes = this.votes.filter(v => v !== vote)
 	}
 }
