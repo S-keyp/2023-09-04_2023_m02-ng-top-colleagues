@@ -26,6 +26,9 @@ export class VotingHistoryComponent implements OnInit {
 	}
 
 	handleUpdateResponse(data: Vote){
+		this.voteService.getVotes().then((data) => {
+			this.votes = data
+		})
 		this.votes.unshift(data)
 	}
 

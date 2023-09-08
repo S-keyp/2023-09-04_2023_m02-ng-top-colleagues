@@ -31,7 +31,6 @@ export class CounterComponent implements OnDestroy {
 	
 	handleUpdateResponse(data: Vote) {
 		this.voteData = data
-		console.log('handleUpdateResponse', this.voteData)
 	}
 
 	ngOnDestroy(): void {
