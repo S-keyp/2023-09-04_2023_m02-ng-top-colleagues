@@ -25,28 +25,16 @@ export class VoteService {
 
   async voteForCollegue(pseudo: string, like_hate: string) {
 		try {
-			let colleagueVote = await this.getUserByPseudo(pseudo);
-			if (colleagueVote != null) {
-				await axios.post(this.baseUrl + "/votes", {
-					pseudo: colleagueVote,
-					like_hate: like_hate
-				});
-			}
+			await axios.post(this.baseUrl + "/votes", {
+				pseudo: pseudo,
+				like_hate: like_hate
+			});
+			
 		} catch (error) {
 			console.error("Erreur in function voteForCollegue : " + error);
 		}
 	}
 
-	async getUserByPseudo(pseudo: string) {
-		const endpoint = this.baseUrl + "/colleagues/" + pseudo
-		try {
-			const response = await axios.get(endpoint);
-			return response.data.pseudo;
-		} catch (error) {
-			return undefined;
-		}
-	}
-	
 	async getVotes() {
 		const endpoint = this.baseUrl + "/votes"
 
@@ -59,12 +47,7 @@ export class VoteService {
 	}
 
 	handleErrorPostVote(error: any) {
-		console.error('CECI EST MON ERREUR', error.message);
+		console.error('ERROR in VoteService', error.message);
 	}
-	
-	handlePostVote(data: any) {
-		// this.data = data
-		console.log(data)
-	}
-  
+	  
 }
