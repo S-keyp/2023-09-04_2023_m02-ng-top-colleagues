@@ -12,7 +12,7 @@ import { VoteService } from 'src/app/providers/vote.service';
 	providers: [ColleagueService]
 })
 export class ColleagueListComponent implements OnInit {
-	colleagueList: any = [];
+	colleagueList: Colleague[] | undefined = [];
 	voteSub: Subscription;
 
 	constructor(private colleagueService: ColleagueService, private voteService: VoteService) {

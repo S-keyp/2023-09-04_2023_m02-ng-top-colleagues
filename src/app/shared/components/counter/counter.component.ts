@@ -1,9 +1,6 @@
 import { Component, Injectable, OnDestroy } from '@angular/core';
-import { Observable, Subject, Subscription, interval } from 'rxjs';
-import { Colleague } from 'src/app/models/colleague';
-import { LikeHate } from 'src/app/models/like-hate';
+import { Subscription } from 'rxjs';
 import { Vote } from 'src/app/models/vote';
-import { ColleagueService } from 'src/app/providers/colleague.service';
 import { VoteService } from 'src/app/providers/vote.service';
 
 @Component({
@@ -14,9 +11,13 @@ import { VoteService } from 'src/app/providers/vote.service';
 @Injectable()
 export class CounterComponent implements OnDestroy {
 
+	voteArray: Vote[] = []
 	voteSub: Subscription
-	voteData: Vote | undefined
-	obs1 = interval(400)
+	voteData = {
+		like: 0,
+		hate: 0
+	}
+
 
 	constructor(private voteService: VoteService) {
 		this.voteSub = this.voteService.abonner().subscribe({
@@ -30,15 +31,14 @@ export class CounterComponent implements OnDestroy {
 	}
 	
 	handleUpdateResponse(data: Vote) {
-		this.voteData = data
+		console.log(data.vote);
+		if(data.vote == 1) this.voteData.like++
+		else this.voteData.hate++
+		// this.voteArray.push(data.vote)
 	}
 
 	ngOnDestroy(): void {
 		this.voteSub.unsubscribe()
-	}
-
-	postVote() { //colleague: Colleague, vote: LikeHate
-		this.voteService.voteForCollegue("jor01", "LIKE")
 	}
 
 }
