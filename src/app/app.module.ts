@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { WelcomeModule } from './pages/welcome/welcome.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -9,7 +11,8 @@ import { WelcomeModule } from './pages/welcome/welcome.module';
   ],
   imports: [
     BrowserModule,
-    WelcomeModule
+    WelcomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Colleague } from 'src/app/models/colleague';
-import { Vote } from 'src/app/models/vote';
 import { ColleagueService } from 'src/app/providers/colleague.service';
-import { VoteService } from 'src/app/providers/vote.service';
 
 @Component({
 	selector: 'tc-colleague-list',
@@ -12,38 +9,19 @@ import { VoteService } from 'src/app/providers/vote.service';
 	providers: [ColleagueService]
 })
 export class ColleagueListComponent implements OnInit {
-	colleagueList: Colleague[] | undefined = [];
-	voteSub: Subscription;
+	colleagueList: Colleague[] = [];;
 
-	constructor(private colleagueService: ColleagueService, private voteService: VoteService) {
+	constructor(private colleagueService: ColleagueService){ }
 
-		this.voteSub = this.voteService.getObservable().subscribe(
-			{
-				next: this.handleUpdateResponse.bind(this),
-				error: this.handleError.bind(this)
+	ngOnInit(){
+		this.update()
+	}
+
+	update() {
+		this.colleagueService.getColleagues().subscribe(
+			data => {
+				this.colleagueList = data
 			}
 		)
 	}
-
-
-	handleUpdateResponse() {
-		this.getColleagueList().then((data) => {
-			this.colleagueList = data
-		})
-	}
-
-	handleError(error: any) {
-		console.log(error)
-	}
-
-	ngOnInit() {
-		this.getColleagueList().then((data) => {
-			this.colleagueList = data
-		})
-	}
-
-	async getColleagueList() {
-		return await this.colleagueService.getColleagueList()
-	}
-
 }

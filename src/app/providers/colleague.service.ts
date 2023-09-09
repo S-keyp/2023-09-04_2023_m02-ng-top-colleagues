@@ -1,35 +1,41 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Colleague } from './../models/colleague';
 import { Injectable } from '@angular/core';
-import { Colleague } from '../models/colleague';
-import axios from 'axios';
-import Axios from 'axios-observable'
-
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ColleagueService {
 
-	baseRoute = "https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2"
+	listColleagues: Colleague[] = [];
 	
-	data = undefined
+	baseUrl = 'https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues'
 
-	constructor() { }
+	constructor(private http: HttpClient) {
 
-	async getColleagueList(): Promise<Colleague[] | undefined> {
-		const endpoint = this.baseRoute + "/colleagues"
-
-		try {
-			
-			const response = await axios.get(endpoint);
-			return response.data;
-
-		} catch (error) {
-
-			return undefined;
-
-		}
 	}
 
-	
+	getColleagues(): Observable<Colleague[]>{
+		return this.http.get<Colleague[]>(this.baseUrl)
+	}
 
+
+
+	// getCollegues(): Observable<Colleague[]> {
+	// 	return this.http.get<Colleague[]>('https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues');
+	// }
+
+	// getColleagueListObservable() {
+	// 	this.http
+	// 	.get<Colleague[]>('https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues')
+	// 	.subscribe({
+	// 		next: (colleagues: Colleague[]) => {
+	// 			this.listColleagues = colleagues
+	// 		},
+	// 		error: err => {
+	// 			console.log(err);
+	// 		}
+	// 	})
+	// }
 }
