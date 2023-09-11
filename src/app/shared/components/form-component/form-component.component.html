@@ -1,26 +1,25 @@
 <h3>form-component driven by template</h3>
-<form (ngSubmit)="submit()" #formComponent="ngForm">
+<form (ngSubmit)="submit()" #formComponent="ngForm" tcFirstLastValidator>
 
-    <label>Pseudo: </label>
-    <input [(ngModel)]="postModel.pseudo" name="pseudo" #pseudo="ngModel" required minlength="2">
+    <label>Pseudo: <input [(ngModel)]="postModel.pseudo" name="pseudo" #pseudo="ngModel" required minlength="2"></label> 
     <p *ngIf="pseudo.dirty && pseudo.invalid">
         Pseudo invalid
     </p>
     
-    <label>nom: </label>
-    <input [(ngModel)]="postModel.nom" name="nom" #nom="ngModel" required minlength="2">
+    <label>nom: <input [(ngModel)]="postModel.nom" name="nom" #nom="ngModel" required minlength="2"></label>
     <p *ngIf="nom.dirty && nom.invalid">
         Nom invalid
     </p>
+    <p *ngIf="formComponent.hasError('uniquename')">
+        Nom doit être différent du prénom
+    </p>
 
-    <label>prenom: </label>
-    <input [(ngModel)]="postModel.prenom" #prenom="ngModel" name="prenom" required>
+    <label>prenom:  <input [(ngModel)]="postModel.prenom" #prenom="ngModel" name="prenom" required></label>
     <p *ngIf="prenom.dirty && prenom.invalid">
         Prenom invalid
     </p>
 
-    <label>photo: </label>
-    <input [(ngModel)]="postModel.photo" #photo="ngModel" name="photo" required>
+    <label>photo: <input [(ngModel)]="postModel.photo" #photo="ngModel" name="photo" required></label>
     <p *ngIf="photo.dirty && photo.invalid">
         Photo invalid
     </p>

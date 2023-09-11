@@ -8,6 +8,7 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
 import { CounterComponent } from '../shared/components/counter/counter.component';
 import { FormComponent } from './components/form-component/form-component.component';
 import { FormsModule } from '@angular/forms';
+import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     VotingHistoryComponent,
     CounterComponent,
     FormComponent,
+    FirstLastValidatorDirective,
   ],
   imports: [
     CommonModule,
