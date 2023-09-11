@@ -1,0 +1,30 @@
+<h3>form-component driven by template</h3>
+<form (ngSubmit)="submit()" #formComponent="ngForm">
+
+    <label>Pseudo: </label>
+    <input [(ngModel)]="postModel.pseudo" name="pseudo" #pseudo="ngModel" required minlength="2">
+    <p *ngIf="pseudo.dirty && pseudo.invalid">
+        Pseudo invalid
+    </p>
+    
+    <label>nom: </label>
+    <input [(ngModel)]="postModel.nom" name="nom" #nom="ngModel" required minlength="2">
+    <p *ngIf="nom.dirty && nom.invalid">
+        Nom invalid
+    </p>
+
+    <label>prenom: </label>
+    <input [(ngModel)]="postModel.prenom" #prenom="ngModel" name="prenom" required>
+    <p *ngIf="prenom.dirty && prenom.invalid">
+        Prenom invalid
+    </p>
+
+    <label>photo: </label>
+    <input [(ngModel)]="postModel.photo" #photo="ngModel" name="photo" required>
+    <p *ngIf="photo.dirty && photo.invalid">
+        Photo invalid
+    </p>
+
+    <button [disabled]="!formComponent.valid" type="submit">Valider</button>
+
+</form>

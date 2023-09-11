@@ -17,12 +17,14 @@ export class ColleagueListComponent implements OnInit {
 
 	constructor(private colleagueService: ColleagueService, private voteService: VoteService) {
 
+
 		this.voteSub = this.voteService.getObservable().subscribe(
 			{
 				next: this.handleUpdateResponse.bind(this),
 				error: this.handleError.bind(this)
 			}
 		)
+
 	}
 
 

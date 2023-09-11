@@ -15,6 +15,7 @@ export class ColleagueService {
 
 	constructor() { }
 
+	
 	async getColleagueList(): Promise<Colleague[] | undefined> {
 		const endpoint = this.baseRoute + "/colleagues"
 
@@ -30,6 +31,14 @@ export class ColleagueService {
 		}
 	}
 
-	
+	async createColleague(colleague: Colleague) {
+		const endpoint = this.baseRoute + "/colleagues"
+		try{
+			const response = await axios.post(endpoint)
+			console.log('Succes Post')
+		} catch(error) {
+			console.log('error in post Colleague: ', error)
+		}
+	}
 
 }
