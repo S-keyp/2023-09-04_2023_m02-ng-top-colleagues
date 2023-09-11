@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     ScorePipe,
     VotingHistoryComponent,
     CounterComponent,
+    FormComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     ColleagueListComponent,
     VotingHistoryComponent,
     CounterComponent,
+    FormComponent,
   ]
 })
 export class SharedModule { }

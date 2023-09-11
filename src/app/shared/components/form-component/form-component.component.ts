@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
 import { ColleagueService } from 'src/app/providers/colleague.service';
-import { Colleague } from '../models/colleague';
+import { Colleague } from 'src/app/models/colleague';
 
 class PostModel {
   pseudo?: string;
   nom?: string;
   prenom?: string;
-  score: number;
+  score?: number;
   photo?: string;
-
-  constructor(){
-    this.score = 0
-  }
 }
 
 @Component({
@@ -25,8 +21,15 @@ export class FormComponent {
   constructor(private colleagueService: ColleagueService){ }
 
   submit(){
-    
-    this.colleagueService.createColleague(this.postModel)
-    console.log(this.postModel)
+    const colleagueToSend = {
+      pseudo: this.postModel.pseudo!,
+      last: this.postModel.nom,
+      first: this.postModel.prenom,
+      score: 0,
+      photo: this.postModel.photo!
+    }
+
+    console.log(colleagueToSend);
+    this.colleagueService.createColleague(colleagueToSend)
   }
 }
