@@ -3,9 +3,5 @@
     <p>Pseudo: {{colleague.pseudo | uppercase}}</p>
     <p>Score: {{colleague.score | score}}</p>
 
-    <tc-like-hate 
-        (vote)="handleVote($event)" 
-        [canLike]="this.colleague.score <= 2000" 
-        [canDislike]="this.colleague.score >= -2000">
-    </tc-like-hate>
+    <tc-like-hate (vote)="handleVote($event)" [canLike]="this.colleague.score <= 2000" [canDislike]="this.colleague.score >= -2000"></tc-like-hate>
 </div>
