@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Directive } from '@angular/core';
 import { AbstractControl, AsyncValidator, NG_ASYNC_VALIDATORS, ValidationErrors } from '@angular/forms';
 import { Observable, map, of } from 'rxjs';
@@ -17,7 +16,8 @@ export class PseudoValidatorDirective implements AsyncValidator{
 
     return this.colleagueService.getCollegueByPseudo(control.value).pipe(
       map((colleague: Colleague | null) => {
-        if(colleague !== null) return {pseudoMessage: "Ce pseudo est déjà utilisé."};
+        console.log('TA MERE LA TCHOIIIIIIN', colleague)  
+        if(colleague != null) return {pseudoMessage: "Ce pseudo est déjà utilisé."};
         return null;
       })
     )
