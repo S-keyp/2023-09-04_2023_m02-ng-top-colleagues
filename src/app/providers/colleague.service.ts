@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Colleague } from '../models/colleague';
 import axios from 'axios';
-import Axios from 'axios-observable'
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -13,8 +13,11 @@ export class ColleagueService {
 	
 	data = undefined
 
-	constructor() { }
+	constructor(private http: HttpClient) { }
 
+	getCollegueByPseudo(pseudo:string){
+		return this.http.get<Colleague | null>('https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues/'+pseudo);
+	}
 	
 	async getColleagueList(): Promise<Colleague[] | undefined> {
 		const endpoint = this.baseRoute + "/colleagues"
