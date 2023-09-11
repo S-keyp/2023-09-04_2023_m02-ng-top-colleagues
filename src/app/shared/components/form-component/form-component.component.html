@@ -1,0 +1,33 @@
+<h3>form-component driven by template</h3>
+<form (ngSubmit)="submit()" #formComponent="ngForm" tcFirstLastValidator>
+
+    <label>Pseudo: <input tcPseudoValidator [(ngModel)]="postModel.pseudo" name="pseudo" #pseudo="ngModel" required minlength="2" [ngModelOptions]="{updateOn: 'blur'}"></label> 
+    
+    <p *ngIf="pseudo.dirty && pseudo.errors && pseudo.value != ''">
+        {{ pseudo.errors!['pseudoMessage'] }}
+    </p>
+    <p *ngIf="pseudo.dirty && pseudo.invalid">
+        Pseudo invalid
+    </p>
+    
+    <label>nom: <input [(ngModel)]="postModel.nom" name="nom" #nom="ngModel" required minlength="2"></label>
+    <p *ngIf="nom.dirty && nom.invalid">
+        Nom invalid
+    </p>
+    <p *ngIf="formComponent.hasError('uniquename')">
+        Nom doit être différent du prénom
+    </p>
+
+    <label>prenom:  <input [(ngModel)]="postModel.prenom" #prenom="ngModel" name="prenom" required></label>
+    <p *ngIf="prenom.dirty && prenom.invalid">
+        Prenom invalid
+    </p>
+
+    <label>photo: <input [(ngModel)]="postModel.photo" #photo="ngModel" name="photo" required></label>
+    <p *ngIf="photo.dirty && photo.invalid">
+        Photo invalid
+    </p>
+
+    <button [disabled]="!formComponent.valid" type="submit">Valider</button>
+
+</form>

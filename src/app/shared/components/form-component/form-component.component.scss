@@ -1,0 +1,11 @@
+form input {
+    border-radius: 5px;
+}
+input.ng-valid {
+    border: 1px rgba(54, 189, 9, 0.848) solid;
+    box-shadow: 0 0 5px rgba(54, 189, 9, 0.848);
+}
+input.ng-invalid {
+    border: 1px rgba(190, 8, 8, 0.848) solid;
+    box-shadow: 0 0 5px rgba(190, 8, 8, 0.848);
+}
