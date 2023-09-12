@@ -14,31 +14,14 @@ import { VoteService } from 'src/app/providers/vote.service';
 })
 export class VotingHistoryComponent implements OnInit {
 	votes: Vote[] = [];
-	voteSub: Subscription
 
-	constructor(private voteService: VoteService) {
-		this.voteSub = this.voteService.getObservable().subscribe(
-			{
-				next: this.handleUpdateResponse.bind(this),
-				error: this.handleError.bind(this)
-			}
-		)
-	}
-
-	handleUpdateResponse(data: Vote){
-		this.voteService.getVotes().then((data) => {
-			this.votes = data
-		})
-		this.votes.unshift(data)
-	}
-
-	handleError(error: any){
-		console.log(error)
-	}
+	constructor(private voteService: VoteService) { }
 
 	ngOnInit(): void {
-		this.voteService.getVotes().then((data) => {
-			this.votes = data
+		this.votes = this.voteService.getList()
+
+		this.voteService.getObservable().subscribe({
+			next: vote => this.votes.unshift(vote)
 		})
 	}
 

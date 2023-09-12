@@ -15,7 +15,7 @@ export class ColleagueComponent {
 
 	handleVote(voteValue: LikeHate) {
 		
-		this.voteService.voteForCollegue(this.colleague.pseudo, LikeHate[voteValue])
+		this.voteService.voteForColleague(this.colleague.pseudo, LikeHate[voteValue])
 		this.voteService.publier({colleague: this.colleague, vote: voteValue})
 		
 	}
