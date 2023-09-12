@@ -17,7 +17,6 @@ export class ColleagueService {
 	constructor(private http: HttpClient) { }
 
 	getCollegueByPseudo(pseudo:string){
-		
 		return this.http.get<Colleague>('https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues/'+pseudo).pipe(
 			catchError((error) => {
 				return of(null);
