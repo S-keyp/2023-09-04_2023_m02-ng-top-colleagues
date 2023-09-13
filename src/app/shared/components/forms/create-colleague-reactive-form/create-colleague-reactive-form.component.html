@@ -1,7 +1,8 @@
 <h3>Reactive form component: Mashcallah Yerbi</h3>
-<form [formGroup]="reactiveForm">
+<form [formGroup]="reactiveForm" tcFirstLastValidator>
     <label>Pseudo: <input formControlName="pseudo"></label>
     <label>nom: <input formControlName="nom"></label>
     <label>prenom: <input formControlName="prenom"></label>
     <label>photo: <input formControlName="photo"></label>
+    <button type="submit" (click)="submit()">Valider</button>
 </form>
