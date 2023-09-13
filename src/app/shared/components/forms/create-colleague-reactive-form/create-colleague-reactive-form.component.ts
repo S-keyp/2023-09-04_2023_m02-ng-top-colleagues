@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { Observable } from 'rxjs';
 import { FirstLastValidatorDirective } from 'src/app/shared/validators/first-last-validator.directive';
 import { ColleagueService } from 'src/app/providers/colleague.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'tc-create-colleague-reactive-form',
@@ -13,7 +14,7 @@ export class CreateColleagueReactiveFormComponent {
 
 	reactiveForm: FormGroup;
 
-	constructor(private formBuilder: FormBuilder, private colleagueService: ColleagueService) {
+	constructor(private formBuilder: FormBuilder, private colleagueService: ColleagueService, private route: Router) {
 		
 
 		this.reactiveForm = this.formBuilder.group({
@@ -45,6 +46,7 @@ export class CreateColleagueReactiveFormComponent {
 		}
 	
 		this.colleagueService.createColleague(colleagueToSend)
+		this.route.navigate(['colleagues', colleagueToSend.pseudo])
 	}
 
 	// validerSync(control: AbstractControl): ValidationErrors | null{

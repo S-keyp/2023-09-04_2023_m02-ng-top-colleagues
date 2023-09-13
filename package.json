@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "create": "ng g module AppRouting --flat --module app.module",
+    "create": "ng g component pages/colleague-detail --module=colleague-detail --type=Page",
     "build": "ng build --base-href=https://S-keyp.github.io/2023-09-04_2023_m02-ng-top-colleagues/",
     "build normal": "ng build",
     "watch": "ng build --watch --configuration development",

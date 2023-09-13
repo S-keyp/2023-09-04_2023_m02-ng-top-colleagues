@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 import { Colleague } from 'src/app/models/colleague';
+import { Router } from '@angular/router';
 
 class PostModel {
   pseudo?: string;
@@ -18,7 +19,7 @@ class PostModel {
 export class FormComponent {
   postModel = new PostModel();
 
-  constructor(private colleagueService: ColleagueService){ }
+  constructor(private colleagueService: ColleagueService, private route: Router){ }
 
   submit(){
     const colleagueToSend = {
@@ -29,7 +30,7 @@ export class FormComponent {
       photo: this.postModel.photo!
     }
 
-    console.log(colleagueToSend);
-    this.colleagueService.createColleague(colleagueToSend)
+    this.colleagueService.createColleague(colleagueToSend)    
+    this.route.navigate(['colleagues', colleagueToSend.pseudo])
   }
 }

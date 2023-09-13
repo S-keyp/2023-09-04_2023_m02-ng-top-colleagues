@@ -7,7 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { WelcomeModule } from './pages/welcome/welcome.module';
 import { CreateColleagueModule } from './pages/create-colleague/create-colleague.module';
 import { CreateColleagueReactiveModule } from './pages/create-colleague-reactive/create-colleague-reactive.module';
-
+import { ColleagueDetailModule } from './pages/colleague-detail/colleague-detail.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -16,10 +17,12 @@ import { CreateColleagueReactiveModule } from './pages/create-colleague-reactive
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     WelcomeModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    ColleagueDetailModule,
     CreateColleagueModule,
     CreateColleagueReactiveModule,
   ],
