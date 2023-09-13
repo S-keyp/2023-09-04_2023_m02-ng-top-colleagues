@@ -1,3 +1,14 @@
+form {
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+form button {
+    width: fit-content;
+}
+
 form input {
     border-radius: 5px;
 }

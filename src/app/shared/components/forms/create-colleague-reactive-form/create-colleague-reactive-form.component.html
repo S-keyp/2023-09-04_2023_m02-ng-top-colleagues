@@ -1,4 +1,4 @@
-<h3>Reactive form component: Mashcallah Yerbi</h3>
+<h3>Reactive form component:</h3>
 <form [formGroup]="reactiveForm" tcFirstLastValidator>
     
     <p *ngIf="reactiveForm.hasError('uniquename') && (reactiveForm.get('nom')?.value && reactiveForm.get('prenom')?.value)">Le nom et prénom doivent être différents</p>

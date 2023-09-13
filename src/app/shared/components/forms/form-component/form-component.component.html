@@ -1,4 +1,4 @@
-<h3>form-component driven by template</h3>
+<h3>Form component driven by template</h3>
 <form (ngSubmit)="submit()" #formComponent="ngForm" tcFirstLastValidator>
 
     <label>Pseudo: <input tcPseudoValidator [(ngModel)]="postModel.pseudo" name="pseudo" #pseudo="ngModel" required minlength="2" [ngModelOptions]="{updateOn: 'blur'}"></label> 
