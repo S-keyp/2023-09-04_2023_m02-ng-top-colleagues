@@ -44,14 +44,27 @@ export class VoteService {
 			}
 		})
 	}
-	
-	voteForColleague(pseudo: string, like_hate: string) {
-		this.http.post(
-			this.baseUrl + '/votes', 
-			{
+
+	async voteForColleague(pseudo: string, like_hate: string) {
+		try {
+			await axios.post(this.baseUrl + "/votes", {
 				pseudo: pseudo,
 				like_hate: like_hate
-			}
-		)
-	} 
+			});
+
+		} catch (error) {
+			console.error("Error in function voteForCollegue() : " + error);
+		}
+	}
+	
+	// TODO: Finish moving axios to http
+	// voteForColleague(pseudo: string, like_hate: string) {
+	// 	this.http.post(
+	// 		this.baseUrl + '/votes', 
+	// 		{
+	// 			pseudo: pseudo,
+	// 			like_hate: like_hate
+	// 		}
+	// 	)
+	// } 
 }
