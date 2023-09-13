@@ -1,5 +1,5 @@
 <div class="profile">
-    <img [src]="colleague.photo">
+    <img *ngIf="isValidUrl(colleague.photo)" [src]="colleague.photo">
     <p>Pseudo: {{colleague.pseudo | uppercase}}</p>
     <p>Score: {{colleague.score | score}}</p>
 

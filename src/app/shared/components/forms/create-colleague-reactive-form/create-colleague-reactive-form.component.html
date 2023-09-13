@@ -1,8 +1,17 @@
 <h3>Reactive form component: Mashcallah Yerbi</h3>
 <form [formGroup]="reactiveForm" tcFirstLastValidator>
-    <label>Pseudo: <input formControlName="pseudo"></label>
+    
+    <p *ngIf="reactiveForm.hasError('uniquename') && (reactiveForm.get('nom')?.value && reactiveForm.get('prenom')?.value)">Le nom et prénom doivent être différents</p>
+    <p *ngIf="reactiveForm.get('pseudo')?.value.length < 2 && reactiveForm.get('pseudo')?.value != ''">Min length 2 char</p>
+    <p *ngIf="reactiveForm.get('pseudo')?.hasError('pseudoMessage')">Pseudo déjà utilisé</p>
+    <label>Pseudo: <input tcPseudoValidator formControlName="pseudo"></label>
+    
+    <p *ngIf="reactiveForm.get('nom')?.value.length < 2 && reactiveForm.get('nom')?.value != ''">Min length 2 char</p>
     <label>nom: <input formControlName="nom"></label>
+    
+    <p *ngIf="reactiveForm.get('prenom')?.value.length < 2 && reactiveForm.get('prenom')?.value != ''">Min length 2 char</p>
     <label>prenom: <input formControlName="prenom"></label>
+    
     <label>photo: <input formControlName="photo"></label>
-    <button type="submit" (click)="submit()">Valider</button>
+    <button type="submit" (click)="submit()"[disabled]="reactiveForm.invalid || reactiveForm.hasError('firstLast') || reactiveForm.hasError('pseudoMessage')">Ajouter</button>
 </form>

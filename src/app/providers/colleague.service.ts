@@ -43,7 +43,6 @@ export class ColleagueService {
 		const endpoint = this.baseRoute + "/colleagues"
 		try{
 			const response = await axios.post(endpoint, colleague);
-			console.log('Succes Post')
 		} catch(error) {
 			console.log('error in post Colleague: ', error)
 		}

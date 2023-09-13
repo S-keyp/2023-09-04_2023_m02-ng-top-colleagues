@@ -19,4 +19,8 @@ export class ColleagueComponent {
 		this.voteService.publier({colleague: this.colleague, vote: voteValue})
 		
 	}
+
+	isValidUrl(url: string): boolean{
+		return url.startsWith('https://')
+	}
 }

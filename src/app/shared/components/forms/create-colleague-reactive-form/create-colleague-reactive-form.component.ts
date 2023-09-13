@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { FirstLastValidatorDirective } from 'src/app/shared/validators/first-last-validator.directive';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 
 @Component({
@@ -16,50 +17,22 @@ export class CreateColleagueReactiveFormComponent {
 		
 
 		this.reactiveForm = this.formBuilder.group({
-			pseudo: [
-				'',
-				{
-					validators: [
-						Validators.required,
-						Validators.minLength(2),
-						this.validerSync
-					],
-					asyncValidators: [
-						// this.validerAsync
-					],
-				},
-				{updateOn: 'blur'}
+			pseudo: [ '',
+				{ validators: [ Validators.required, Validators.minLength(2) ]},
+				
 			],
-			nom: [
-				'',
-				{
-					validators: [
-						Validators.required,
-						Validators.minLength(2)
-					],
-				},
-				{updateOn: 'blur'}
+			nom: [ '',
+				{ validators: [ Validators.required, Validators.minLength(2) ]},
 			],
-			prenom: [
-				'',
-				{
-					validators: [
-						Validators.required,
-						Validators.minLength(2)
-					],
-				},
-				{updateOn: 'blur'}
+			prenom: [ '',
+				{ validators: [ Validators.required, Validators.minLength(2) ]},
 			],
-			photo: [
-				'',
-				{
-					validators: [
-						Validators.required,
-					],
-				},
-				{updateOn: 'blur'}
+			photo: [ '',
+				{ validators: [ Validators.required, Validators.minLength(2) ]},
 			],
-		})
+		},
+		{ updateOn: 'blur' }
+		)
 	}
 
 	submit(){
@@ -71,22 +44,21 @@ export class CreateColleagueReactiveFormComponent {
 		  photo: this.reactiveForm.get('photo')!.value!
 		}
 	
-		console.log(colleagueToSend);
 		this.colleagueService.createColleague(colleagueToSend)
 	}
 
-	validerSync(control: AbstractControl): ValidationErrors | null{
-		const firstname = control.get('prenom')?.value
-		const lastname = control.get('nom')?.value
+	// validerSync(control: AbstractControl): ValidationErrors | null{
+	// 	const firstname = control.get('prenom')?.value
+	// 	const lastname = control.get('nom')?.value
 
-		if((firstname !== undefined )&& (firstname === lastname)) {
-		return {
-			uniquename: true
-		}
-		}
+	// 	if((firstname !== undefined )&& (firstname === lastname)) {
+	// 	return {
+	// 		uniquename: true
+	// 	}
+	// 	}
 
-		return null
-	}
+	// 	return null
+	// }
 
 	// validerAsync(control: AbstractControl): Observable<ValidationErrors | null>{
 
