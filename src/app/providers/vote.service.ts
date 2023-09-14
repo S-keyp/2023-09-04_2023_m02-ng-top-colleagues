@@ -13,7 +13,7 @@ export class VoteService {
 
 	private voteSubject = new Subject<Vote>();
 	
-	private baseUrl = 'https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2'
+	private baseUrl = 'https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2'
 
 
 	constructor(private http: HttpClient){
