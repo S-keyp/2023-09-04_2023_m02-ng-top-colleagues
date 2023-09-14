@@ -5,9 +5,11 @@ import { WelcomePage } from './pages/welcome/welcome.page';
 import { CreateColleaguePage } from './pages/create-colleague/create-colleague.page';
 import { CreateColleagueReactivePage } from './pages/create-colleague-reactive/create-colleague-reactive.page';
 import { ColleagueDetailPage } from './pages/colleague-detail/colleague-detail.page';
+import { LoginPage } from './pages/login/login.page';
 
 const routes: Routes = [
   { title: 'Homepage', path: 'homepage', component: WelcomePage},
+  { title: 'Login', path: 'login', component: LoginPage},
   { title: 'Colleague detail', path: 'colleagues/:pseudo', component: ColleagueDetailPage},
   { title: 'Create a colleague', path: 'create-colleague', component: CreateColleaguePage},
   { title: 'Create reactive colleague', path: 'create-reactvie-colleague', component: CreateColleagueReactivePage},

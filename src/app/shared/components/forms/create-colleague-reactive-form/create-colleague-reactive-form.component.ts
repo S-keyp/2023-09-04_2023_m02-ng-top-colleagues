@@ -48,21 +48,4 @@ export class CreateColleagueReactiveFormComponent {
 		this.colleagueService.createColleague(colleagueToSend)
 		this.route.navigate(['homepage'])
 	}
-
-	// validerSync(control: AbstractControl): ValidationErrors | null{
-	// 	const firstname = control.get('prenom')?.value
-	// 	const lastname = control.get('nom')?.value
-
-	// 	if((firstname !== undefined )&& (firstname === lastname)) {
-	// 	return {
-	// 		uniquename: true
-	// 	}
-	// 	}
-
-	// 	return null
-	// }
-
-	// validerAsync(control: AbstractControl): Observable<ValidationErrors | null>{
-
-	// }
 }

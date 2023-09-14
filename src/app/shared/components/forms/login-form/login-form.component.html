@@ -1,0 +1,11 @@
+<p>login-form works!</p>
+<form [formGroup]="reactiveForm">
+    
+    <p *ngIf="reactiveForm.get('pseudo')?.hasError('pseudoMessage')">Pseudo déjà utilisé</p>
+    <label>Pseudo: <input tcPseudoValidator formControlName="pseudo"></label>
+    
+    <p *ngIf="reactiveForm.get('prenom')?.value.length < 2 && reactiveForm.get('prenom')?.value != ''">Min length 2 char</p>
+    <label>prenom: <input formControlName="prenom"></label>
+    
+    <button type="submit" (click)="submit()"[disabled]="reactiveForm.invalid || reactiveForm.hasError('firstLast') || reactiveForm.hasError('pseudoMessage')">Ajouter</button>
+</form>

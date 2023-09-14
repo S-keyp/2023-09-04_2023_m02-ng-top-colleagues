@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { LikeHate } from 'src/app/models/like-hate';
 import { Vote } from 'src/app/models/vote';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 import { VoteService } from 'src/app/providers/vote.service';

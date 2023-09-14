@@ -2,6 +2,7 @@ import { Component, Injectable, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LikeHate } from 'src/app/models/like-hate';
 import { Vote } from 'src/app/models/vote';
+import { AuthService } from 'src/app/providers/auth.service';
 import { VoteService } from 'src/app/providers/vote.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class CounterComponent implements OnDestroy {
 	}
 
 
-	constructor(private voteService: VoteService) {
+	constructor(private voteService: VoteService, private authService: AuthService) {
+		
 		this.voteSub = this.voteService.getObservable().subscribe({
 			next: this.handleUpdateResponse.bind(this),
 			error: this.handleError.bind(this)

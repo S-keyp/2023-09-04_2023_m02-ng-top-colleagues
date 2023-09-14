@@ -13,6 +13,9 @@ import { PseudoValidatorDirective } from './validators/pseudo-validator.directiv
 import { CreateColleagueReactiveFormComponent } from './components/forms/create-colleague-reactive-form/create-colleague-reactive-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../providers/auth.service';
+import { LoginFormComponent } from '../shared/components/forms/login-form/login-form.component';
+import { LoginModule } from '../pages/login/login.module';
 
 
 @NgModule({
@@ -23,16 +26,17 @@ import { RouterModule } from '@angular/router';
     ScorePipe,
     VotingHistoryComponent,
     CounterComponent,
-    FormComponent,
     FirstLastValidatorDirective,
     PseudoValidatorDirective,
+    FormComponent,
     CreateColleagueReactiveFormComponent,
+    LoginFormComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     LikeHateComponent,
@@ -42,6 +46,10 @@ import { RouterModule } from '@angular/router';
     CounterComponent,
     FormComponent,
     CreateColleagueReactiveFormComponent,
-  ]
+    LoginFormComponent
+  ],
+  providers: [
+    AuthService
+  ],
 })
 export class SharedModule { }
