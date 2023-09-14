@@ -1,6 +1,6 @@
 <div class="profile">
     <img *ngIf="isValidUrl(colleague.photo)" [src]="colleague.photo">
-    <p>Pseudo: {{colleague.pseudo | uppercase}}</p>
+    <p>Pseudo: <a [routerLink]="['/colleagues', colleague.pseudo]">{{colleague.pseudo | uppercase}}</a></p>
     <p>Score: {{colleague.score | score}}</p>
 
     <tc-like-hate (vote)="handleVote($event)" [canLike]="this.colleague.score <= 2000" [canDislike]="this.colleague.score >= -2000"></tc-like-hate>

@@ -46,7 +46,7 @@ export class CreateColleagueReactiveFormComponent {
 		}
 	
 		this.colleagueService.createColleague(colleagueToSend)
-		this.route.navigate(['colleagues', colleagueToSend.pseudo])
+		this.route.navigate(['homepage'])
 	}
 
 	// validerSync(control: AbstractControl): ValidationErrors | null{

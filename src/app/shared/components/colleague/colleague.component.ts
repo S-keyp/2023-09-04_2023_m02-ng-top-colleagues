@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Colleague } from 'src/app/models/colleague';
 import { LikeHate } from 'src/app/models/like-hate';
 import { VoteService } from 'src/app/providers/vote.service';
