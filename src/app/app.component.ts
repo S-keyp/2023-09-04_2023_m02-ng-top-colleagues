@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './providers/auth.service';
 
 
 @Component({
@@ -8,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'top_colleagues';
+
+  constructor(private authService: AuthService){
+
+  }
+
+  logOut(){
+    this.authService.logOut()
+  }
+  
 }

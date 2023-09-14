@@ -9,7 +9,6 @@ import { CreateColleagueModule } from './pages/create-colleague/create-colleague
 import { CreateColleagueReactiveModule } from './pages/create-colleague-reactive/create-colleague-reactive.module';
 import { ColleagueDetailModule } from './pages/colleague-detail/colleague-detail.module';
 import { SharedModule } from './shared/shared.module';
-import { LoginModule } from './pages/login/login.module';
 
 
 @NgModule({
@@ -26,7 +25,6 @@ import { LoginModule } from './pages/login/login.module';
     ColleagueDetailModule,
     CreateColleagueModule,
     CreateColleagueReactiveModule,
-    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
