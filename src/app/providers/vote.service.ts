@@ -16,7 +16,7 @@ export class VoteService {
 	private baseUrl = 'https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2'
 
 
-	constructor(private http: HttpClient){
+	constructor(private http: HttpClient, ){
 		this.loadList()
 	}
 
@@ -47,10 +47,14 @@ export class VoteService {
 
 	async voteForColleague(pseudo: string, like_hate: string) {
 		try {
+			const token = localStorage.getItem('access_token')
 			await axios.post(this.baseUrl + "/votes", {
 				pseudo: pseudo,
 				like_hate: like_hate
-			});
+			},
+			{
+				headers: { Authorization: `Bearer ${token}` }
+			})
 
 		} catch (error) {
 			console.error("Error in function voteForCollegue() : " + error);

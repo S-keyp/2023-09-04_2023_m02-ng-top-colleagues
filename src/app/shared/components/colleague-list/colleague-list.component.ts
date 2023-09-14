@@ -35,7 +35,7 @@ export class ColleagueListComponent implements OnInit {
 	}
 
 	handleError(error: any) {
-		console.log(error)
+		console.error(error)
 	}
 
 	ngOnInit() {

@@ -28,12 +28,22 @@ export class ColleagueService {
 		);
 	}
 	
+	getBearerConfig(){
+		const token = localStorage.getItem('access_token')
+		
+		return {
+			headers: { Authorization: `Bearer ${token}` }
+		} 
+	}
+	
 	async getColleagueList(): Promise<Colleague[] | undefined> {
+		
 		const endpoint = this.baseRoute + "/colleagues"
+		const config = this.getBearerConfig()
 
 		try {
 
-			const response = await axios.get(endpoint);
+			const response = await axios.get(endpoint, config);
 			return response.data;
 
 		} catch (error) {
@@ -45,8 +55,11 @@ export class ColleagueService {
 
 	async createColleague(colleague: Colleague) {
 		const endpoint = this.baseRoute + "/colleagues"
+		
+		const config = this.getBearerConfig()
+
 		try{
-			const response = await axios.post(endpoint, colleague);
+			const response = await axios.post(endpoint, colleague, config);
 		} catch(error) {
 			console.log('error in post Colleague: ', error)
 		}
