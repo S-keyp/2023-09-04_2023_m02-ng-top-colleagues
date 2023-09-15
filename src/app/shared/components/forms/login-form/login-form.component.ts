@@ -19,7 +19,6 @@ export class LoginFormComponent {
 		private authService: AuthService, 
 		private router: Router
 		) {
-		
 
 		this.reactiveForm = this.formBuilder.group({
 			pseudo: [ '',
@@ -32,6 +31,7 @@ export class LoginFormComponent {
 		},
 		{ updateOn: 'blur' }
 		)
+
 	}
 
 	submit(){
@@ -43,6 +43,8 @@ export class LoginFormComponent {
 				this.invalidCred = true
 				return of(null)
 			}
-		)).subscribe()
+		)).subscribe(
+			() => this.authService.getCurrentUser()
+		)
 	}
 }

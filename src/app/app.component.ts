@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './providers/auth.service';
+import { Colleague } from './models/colleague';
 
 
 @Component({
@@ -7,11 +8,15 @@ import { AuthService } from './providers/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'top_colleagues';
 
-  constructor(private authService: AuthService){
+  user!: Colleague
 
+  constructor(private authService: AuthService){ }
+
+  ngOnInit(){
+    this.authService.getCurrentUser().subscribe(data => this.user = data)
   }
 
   isLogged(){

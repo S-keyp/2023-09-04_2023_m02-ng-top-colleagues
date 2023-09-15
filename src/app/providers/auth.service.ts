@@ -8,6 +8,7 @@ import { tap } from 'rxjs';
 	providedIn: 'root'
 })
 export class AuthService {
+
 	urlLogin = 'https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/login'
 
 	constructor(private http: HttpClient, private router: Router) { }
@@ -26,15 +27,6 @@ export class AuthService {
 					this.router.navigate(["homepage"])
 				}
 			))
-
-
-
-			// .subscribe(
-			// 	(res: any) => {
-			// 		localStorage.setItem('access_token', res.jwt);
-			// 		this.router.navigate(["homepage"])
-			// 	}
-			// );
 	}
 
 	isLogged(){
@@ -46,5 +38,11 @@ export class AuthService {
 			localStorage.clear()
 			this.router.navigate(['login'])
 		}
+	}
+
+	getCurrentUser() {
+		const url = 'https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/current_user'
+		
+		return this.http.get<Colleague>(url)
 	}
 }

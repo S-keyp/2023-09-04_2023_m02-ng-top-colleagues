@@ -1,5 +1,6 @@
 <header>
     <nav [ngClass]="{hidden: !isLogged()}">
+        <h4>{{ user.last }} {{ user.first }}</h4>
         <a routerLink="/homepage" routerLinkActive="active-link">Homepage</a>
         <a routerLink="/create-colleague" routerLinkActive="active-link">Create collegue</a>
         <a routerLink="/create-reactvie-colleague" routerLinkActive="active-link">Create colleague reactive</a>
@@ -8,7 +9,6 @@
 </header>
 <main>
     <router-outlet>
-
     </router-outlet>
 </main>
 
