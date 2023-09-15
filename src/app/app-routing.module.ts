@@ -14,7 +14,7 @@ const routes: Routes = [
   { title: 'Colleague detail', path: 'colleagues/:pseudo', component: ColleagueDetailPage , canActivate: [AuthGuard]},
   { title: 'Create a colleague', path: 'create-colleague', component: CreateColleaguePage , canActivate: [AuthGuard]},
   { title: 'Create reactive colleague', path: 'create-reactvie-colleague', component: CreateColleagueReactivePage , canActivate: [AuthGuard]},
-  // { path: '**', component: LoginPage },
+  { path: '**', component: LoginPage },
   { path:'', pathMatch: 'full', redirectTo: '/login'},
 ]
 

@@ -17,15 +17,12 @@ export class AuthService {
 			password: password
 		}
 
-		console.log('access token', localStorage.getItem('access_token'));
-
 		return this.http
 			.post<any>(`${this.urlLogin}`, user)
 			.subscribe(
 				(res: any) => {
-					console.log('res: ', res)
 					localStorage.setItem('access_token', res.jwt);
-					this.router.navigate(["/"])
+					this.router.navigate(["homepage"])
 				}
 			);
 	}
@@ -40,7 +37,4 @@ export class AuthService {
 			this.router.navigate(['login'])
 		}
 	}
-
-	// get /current_user
-	// Authorization: Bearer {{ token}} 
 }

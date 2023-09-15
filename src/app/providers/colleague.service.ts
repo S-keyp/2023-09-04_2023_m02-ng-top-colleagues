@@ -65,7 +65,7 @@ export class ColleagueService {
 		try{
 			const response = await axios.post(endpoint, colleague, config);
 		} catch(error) {
-			console.log('error in post Colleague: ', error)
+			console.error('error in post Colleague: ', error)
 		}
 	}
 

@@ -37,6 +37,5 @@ export class LoginFormComponent {
 			this.reactiveForm.get('pseudo')!.value!, 
 			this.reactiveForm.get('password')!.value!
 		)
-		this.router.navigate(['homepage'])
 	}
 }
