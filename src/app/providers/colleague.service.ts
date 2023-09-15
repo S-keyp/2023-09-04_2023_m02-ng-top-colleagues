@@ -12,8 +12,6 @@ export class ColleagueService {
 
 	baseRoute = "https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2"
 	
-	data = undefined
-
 	constructor(private http: HttpClient) { }
 
 	getColleague(pseudo: string | any): Observable<Colleague | null> {
@@ -21,7 +19,7 @@ export class ColleagueService {
 	}
 
 	getColleagues(): Observable<Colleague[]> {
-		return this.http.get<Colleague[]>('https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues')
+		return this.http.get<Colleague[]>(this.baseRoute + '/colleagues')
 	}
 
 	getCollegueByPseudo(pseudo:string | any): Observable<Colleague | null> {

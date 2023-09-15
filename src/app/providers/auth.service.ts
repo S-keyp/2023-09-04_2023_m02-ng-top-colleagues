@@ -2,6 +2,7 @@ import { Colleague } from './../models/colleague';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -19,12 +20,21 @@ export class AuthService {
 
 		return this.http
 			.post<any>(`${this.urlLogin}`, user)
-			.subscribe(
-				(res: any) => {
-					localStorage.setItem('access_token', res.jwt);
+			.pipe(
+				tap(res => {
+					localStorage.setItem('access_token', res.jwt)
 					this.router.navigate(["homepage"])
 				}
-			);
+			))
+
+
+
+			// .subscribe(
+			// 	(res: any) => {
+			// 		localStorage.setItem('access_token', res.jwt);
+			// 		this.router.navigate(["homepage"])
+			// 	}
+			// );
 	}
 
 	isLogged(){

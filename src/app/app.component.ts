@@ -14,6 +14,10 @@ export class AppComponent {
 
   }
 
+  isLogged(){
+    return this.authService.isLogged()
+  }
+
   logOut(){
     this.authService.logOut()
   }

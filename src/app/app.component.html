@@ -1,5 +1,5 @@
 <header>
-    <nav>
+    <nav [ngClass]="{hidden: !isLogged()}">
         <a routerLink="/homepage" routerLinkActive="active-link">Homepage</a>
         <a routerLink="/create-colleague" routerLinkActive="active-link">Create collegue</a>
         <a routerLink="/create-reactvie-colleague" routerLinkActive="active-link">Create colleague reactive</a>

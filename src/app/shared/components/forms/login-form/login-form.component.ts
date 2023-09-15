@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { AuthService } from 'src/app/providers/auth.service';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 
@@ -11,6 +12,7 @@ import { ColleagueService } from 'src/app/providers/colleague.service';
 })
 export class LoginFormComponent {
   reactiveForm: FormGroup;
+  invalidCred = false
 
 	constructor(
 		private formBuilder: FormBuilder, 
@@ -36,6 +38,11 @@ export class LoginFormComponent {
 		this.authService.signIn(
 			this.reactiveForm.get('pseudo')!.value!, 
 			this.reactiveForm.get('password')!.value!
-		)
+		).pipe(
+				catchError(error => {
+				this.invalidCred = true
+				return of(null)
+			}
+		)).subscribe()
 	}
 }
