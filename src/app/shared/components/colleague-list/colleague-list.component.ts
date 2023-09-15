@@ -1,7 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Colleague } from 'src/app/models/colleague';
-import { Vote } from 'src/app/models/vote';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 import { VoteService } from 'src/app/providers/vote.service';
 
@@ -12,36 +10,15 @@ import { VoteService } from 'src/app/providers/vote.service';
 	providers: [ColleagueService]
 })
 export class ColleagueListComponent implements OnInit {
-	colleagueList: Colleague[] | undefined = [];
-	voteSub: Subscription;
 
-	constructor(private colleagueService: ColleagueService, private voteService: VoteService) {
-		
+	colleagueList: Colleague[] | null = [];
 
-		this.voteSub = this.voteService.getObservable().subscribe(
-			{
-				next: this.handleUpdateResponse.bind(this),
-				error: this.handleError.bind(this)
-			}
-		)
-
-	}
-
-
-	handleUpdateResponse() {
-		this.getColleagueList().then((data) => {
-			this.colleagueList = data
-		})
-	}
-
-	handleError(error: any) {
-		console.error(error)
-	}
+	constructor(private colleagueService: ColleagueService, private voteService: VoteService) {	}
 
 	ngOnInit() {
-		this.getColleagueList().then((data) => {
-			this.colleagueList = data
-		})
+		this.colleagueService.getColleagues().subscribe(
+			colleagues => this.colleagueList = colleagues
+		)
 	}
 
 	async getColleagueList() {

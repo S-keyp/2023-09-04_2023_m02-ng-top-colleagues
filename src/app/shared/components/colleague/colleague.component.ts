@@ -15,10 +15,10 @@ export class ColleagueComponent {
 	constructor(private voteService: VoteService){ }
 
 	handleVote(voteValue: LikeHate) {
-		
+		if(voteValue == 1) this.colleague.score += 100
+		else this.colleague.score -= 200
 		this.voteService.voteForColleague(this.colleague.pseudo, LikeHate[voteValue])
 		this.voteService.publier({colleague: this.colleague, vote: voteValue})
-		
 	}
 
 	isValidUrl(url: string): boolean{

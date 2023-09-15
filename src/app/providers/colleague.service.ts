@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Colleague } from '../models/colleague';
 import axios from 'axios';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, Subject, catchError, of } from 'rxjs';
 
 
 @Injectable({
@@ -20,8 +20,12 @@ export class ColleagueService {
 		return this.http.get<Colleague>('https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues/' + pseudo)
 	}
 
+	getColleagues(): Observable<Colleague[]> {
+		return this.http.get<Colleague[]>('https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues')
+	}
+
 	getCollegueByPseudo(pseudo:string | any): Observable<Colleague | null> {
-		return this.http.get<Colleague>('https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues/'+pseudo).pipe(
+		return this.http.get<Colleague>('https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues/' + pseudo).pipe(
 			catchError((error) => {
 				return of(null);
 			})

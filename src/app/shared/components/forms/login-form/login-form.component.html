@@ -1,11 +1,10 @@
 <h2>Login</h2>
-
-<form [formGroup]="reactiveForm">
-    
-    <p *ngIf="reactiveForm.get('pseudo')?.hasError('pseudoMessage')">Pseudo déjà utilisé</p>
+<br>
+<form [formGroup]="reactiveForm" (ngSubmit)="submit()">
 
     <label>Pseudo: <input formControlName="pseudo"></label>
     <label>prenom: <input formControlName="password"></label>
-    <!-- [disabled]="reactiveForm.invalid || reactiveForm.hasError('firstLast') || reactiveForm.hasError('pseudoMessage')" -->
-    <button type="submit" (click)="submit()">Ajouter</button>
+
+    <button type="submit" (click)="submit()">Connexion</button>
+
 </form>
