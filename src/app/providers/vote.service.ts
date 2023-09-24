@@ -40,7 +40,7 @@ export class VoteService {
 				}
 			},
 			error: error => {
-				console.error(error)
+				console.error('error on loadList:', error)
 			}
 		})
 	}
